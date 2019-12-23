@@ -31,7 +31,7 @@ void __debug_print(ptr<struct list> p) {
     } while (q != p);
 }
 
-void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_count(length), size_t length) {
+void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_count(head->length), size_t length) {
     /**
      * __internal_new_list - initialize a doubly linked list within a structure
      * 
@@ -40,12 +40,12 @@ void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_coun
     head->prev = head;
     head->next = head;
 
-    head->data_addr = data;
     head->length = length;
+    head->data_addr = data;
     return;
 }
 
-void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insertion, array_ptr<void> data : byte_count(length), size_t length) {
+void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insertion, array_ptr<void> data : byte_count(insertion->length), size_t length) {
     /**
      * __internal_insert_list_after - insert an element after the destiny element
      * 
@@ -57,8 +57,8 @@ void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insert
     curr->next = insertion;
     insertion->prev = curr;
 
-    insertion->data_addr = data;
     insertion->length = length;
+    insertion->data_addr = data;
     return;
 }
 

@@ -38,8 +38,8 @@ struct list {
     size_t length;
 };
 
-extern void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_count(length), size_t length); 
-extern void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insertion, array_ptr<void> data : byte_count(length), size_t length);
+extern void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_count(head->length), size_t length); 
+extern void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insertion, array_ptr<void> data : byte_count(insertion->length), size_t length);
 extern void __internal_remove_list(ptr<struct list> curr, long offset);
 extern int __internal_list_size(ptr<struct list> head);
 
