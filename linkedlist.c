@@ -1,27 +1,37 @@
-#include <stdlib.h>
-#include <stdio.h>
+#include <stdlib_checked.h>
+#include <stdio_checked.h>
+#include <stdchecked.h>
 
 #include "linkedlist.h"
+#include "print.h"
 
-void __debug_print(struct list* p) {
+#pragma CHECKED_SCOPE ON
+
+void __debug_print(ptr<struct list> p) {
     /**
      * __debug_print - print the address / next value / prev value 
      *                 of all pointers in the linked list
      * 
      * p: the list head, can be an arbitrary element in the list
      */
-    struct list* q = p;
+    ptr<struct list> q = p;
     do {
-        printf("{\n");
-        printf("\tCurr Address: %zx\n", (size_t) q);
-        printf("\tNext Address: %zx\n", (size_t) q->next);
-        printf("\tPrev Address: %zx\n", (size_t) q->prev);
-        printf("}\n");
+        fputs("{\n", stdout);
+        fputs("\tCurr Address: ", stdout);
+        print_int((int) q);
+        putchar('\n');
+        fputs("\tNext Address: ", stdout);
+        print_int((int) q->next);
+        putchar('\n');
+        fputs("\tPrev Address: ", stdout);
+        print_int((int) q->prev);
+        putchar('\n');
+        fputs("}\n", stdout);
         q = q->next;
     } while (q != p);
 }
 
-void __internal_new_list(struct list* head) {
+void __internal_new_list(ptr<struct list> head, array_ptr<void> data : byte_count(length), size_t length) {
     /**
      * __internal_new_list - initialize a doubly linked list within a structure
      * 
@@ -29,10 +39,13 @@ void __internal_new_list(struct list* head) {
      */
     head->prev = head;
     head->next = head;
+
+    head->data_addr = data;
+    head->length = length;
     return;
 }
 
-void __internal_insert_list_after(struct list* curr, struct list* insertion) {
+void __internal_insert_list_after(ptr<struct list> curr, ptr<struct list> insertion, array_ptr<void> data : byte_count(length), size_t length) {
     /**
      * __internal_insert_list_after - insert an element after the destiny element
      * 
@@ -43,10 +56,13 @@ void __internal_insert_list_after(struct list* curr, struct list* insertion) {
     insertion->next = curr->next;
     curr->next = insertion;
     insertion->prev = curr;
+
+    insertion->data_addr = data;
+    insertion->length = length;
     return;
 }
 
-void __internal_remove_list(struct list* curr, long offset) {
+void __internal_remove_list(ptr<struct list> curr, long offset) {
     /**
      * __internal_remove_list - remove an element from the list
      * 
@@ -59,11 +75,11 @@ void __internal_remove_list(struct list* curr, long offset) {
         curr->next->prev = curr->prev;
     }
     // free current pointer
-    free((void *)((long) curr - offset));
+    free <void>(curr->data_addr);
     return;
 }
 
-int __internal_list_size(struct list *head) {
+int __internal_list_size(ptr<struct list> head) {
     /**
      * __internal_list_size - fetch the size of the list
      * 
@@ -71,7 +87,7 @@ int __internal_list_size(struct list *head) {
      * return: the size of the doubly linked list
      */
     int size = 1;
-    struct list* p = head->next;
+    ptr<struct list> p = head->next;
 
     while (p != head) {
         p = p->next;
