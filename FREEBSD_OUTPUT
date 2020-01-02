@@ -1,0 +1,134 @@
+/root/clang/build/bin/clang  -g -O3 -std=c99 -Wall -c test.c -o test.o
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:175:5: error: expected identifier or '('
+int getc(FILE *stream : itype(_Ptr<FILE>));
+    ^
+/usr/include/stdio.h:500:19: note: expanded from macro 'getc'
+#define getc(fp)        (!__isthreaded ? __sgetc(fp) : (getc)(fp))
+                         ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:175:5: error: expected ')'
+/usr/include/stdio.h:500:19: note: expanded from macro 'getc'
+#define getc(fp)        (!__isthreaded ? __sgetc(fp) : (getc)(fp))
+                         ^
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:175:5: note: to match this '('
+/usr/include/stdio.h:500:18: note: expanded from macro 'getc'
+#define getc(fp)        (!__isthreaded ? __sgetc(fp) : (getc)(fp))
+                        ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:176:5: error: expected identifier or '('
+int putc(int c, FILE *stream : itype(_Ptr<FILE>));
+    ^
+/usr/include/stdio.h:501:22: note: expanded from macro 'putc'
+#define putc(x, fp)     (!__isthreaded ? __sputc(x, fp) : (putc)(x, fp))
+                         ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:176:5: error: expected ')'
+/usr/include/stdio.h:501:22: note: expanded from macro 'putc'
+#define putc(x, fp)     (!__isthreaded ? __sputc(x, fp) : (putc)(x, fp))
+                         ^
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:176:5: note: to match this '('
+/usr/include/stdio.h:501:21: note: expanded from macro 'putc'
+#define putc(x, fp)     (!__isthreaded ? __sputc(x, fp) : (putc)(x, fp))
+                        ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:198:6: error: expected identifier or '('
+void clearerr(FILE *stream : itype(_Ptr<FILE>));
+     ^
+/usr/include/stdio.h:494:22: note: expanded from macro 'clearerr'
+#define clearerr(p)     (!__isthreaded ? __sclearerr(p) : (clearerr)(p))
+                         ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:198:6: error: expected ')'
+/usr/include/stdio.h:494:22: note: expanded from macro 'clearerr'
+#define clearerr(p)     (!__isthreaded ? __sclearerr(p) : (clearerr)(p))
+                         ^
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:198:6: note: to match this '('
+/usr/include/stdio.h:494:21: note: expanded from macro 'clearerr'
+#define clearerr(p)     (!__isthreaded ? __sclearerr(p) : (clearerr)(p))
+                        ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:199:5: error: expected identifier or '('
+int feof(FILE *stream : itype(_Ptr<FILE>));
+    ^
+/usr/include/stdio.h:492:19: note: expanded from macro 'feof'
+#define feof(p)         (!__isthreaded ? __sfeof(p) : (feof)(p))
+                         ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:199:5: error: expected ')'
+/usr/include/stdio.h:492:19: note: expanded from macro 'feof'
+#define feof(p)         (!__isthreaded ? __sfeof(p) : (feof)(p))
+                         ^
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:199:5: note: to match this '('
+/usr/include/stdio.h:492:18: note: expanded from macro 'feof'
+#define feof(p)         (!__isthreaded ? __sfeof(p) : (feof)(p))
+                        ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:200:5: error: expected identifier or '('
+int ferror(FILE *stream : itype(_Ptr<FILE>));
+    ^
+/usr/include/stdio.h:493:20: note: expanded from macro 'ferror'
+#define ferror(p)       (!__isthreaded ? __sferror(p) : (ferror)(p))
+                         ^
+In file included from test.c:1:
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:200:5: error: expected ')'
+/usr/include/stdio.h:493:20: note: expanded from macro 'ferror'
+#define ferror(p)       (!__isthreaded ? __sferror(p) : (ferror)(p))
+                         ^
+/root/clang/build/lib/clang/8.0.0/include/stdio_checked.h:200:5: note: to match this '('
+/usr/include/stdio.h:493:19: note: expanded from macro 'ferror'
+#define ferror(p)       (!__isthreaded ? __sferror(p) : (ferror)(p))
+                        ^
+test.c:35:5: warning: cannot prove argument meets declared bounds for 2nd parameter [-Wcheck-bounds-decls-checked-scope]
+    list_new(int1, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:8:77: note: expanded from macro 'list_new'
+#define list_new(curr, structure, name) (__internal_new_list(&(curr->name), (array_ptr<void>)curr, sizeof(structure)))
+                                                                            ^~~~~~~~~~~~~~~~~~~~~
+test.c:35:5: note: (expanded) expected argument bounds are 'bounds((_Array_ptr<char>)int1, (_Array_ptr<char>)int1 + (_Ptr<struct list>)&(int1->l)->length)'
+./linkedlist.h:8:77: note: expanded from macro 'list_new'
+#define list_new(curr, structure, name) (__internal_new_list(&(curr->name), (array_ptr<void>)curr, sizeof(structure)))
+                                                                            ^
+test.c:35:5: note: (expanded) inferred bounds are 'bounds((_Array_ptr<struct Integer>)int1, (_Array_ptr<struct Integer>)int1 + 1)'
+    list_new(int1, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:8:77: note: expanded from macro 'list_new'
+#define list_new(curr, structure, name) (__internal_new_list(&(curr->name), (array_ptr<void>)curr, sizeof(structure)))
+                                                                            ^~~~~~~~~~~~~~~~~~~~~
+test.c:36:5: warning: cannot prove argument meets declared bounds for 3rd parameter [-Wcheck-bounds-decls-checked-scope]
+    list_insert(int1, int2, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^~~~~~~~~~~~~~~~~~~~~
+test.c:36:5: note: (expanded) expected argument bounds are 'bounds((_Array_ptr<char>)int2, (_Array_ptr<char>)int2 + (_Ptr<struct list>)&((int2)->l)->length)'
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^
+test.c:36:5: note: (expanded) inferred bounds are 'bounds((_Array_ptr<struct Integer>)int2, (_Array_ptr<struct Integer>)int2 + 1)'
+    list_insert(int1, int2, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^~~~~~~~~~~~~~~~~~~~~
+test.c:37:5: warning: cannot prove argument meets declared bounds for 3rd parameter [-Wcheck-bounds-decls-checked-scope]
+    list_insert(int2, int3, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^~~~~~~~~~~~~~~~~~~~~
+test.c:37:5: note: (expanded) expected argument bounds are 'bounds((_Array_ptr<char>)int3, (_Array_ptr<char>)int3 + (_Ptr<struct list>)&((int3)->l)->length)'
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^
+test.c:37:5: note: (expanded) inferred bounds are 'bounds((_Array_ptr<struct Integer>)int3, (_Array_ptr<struct Integer>)int3 + 1)'
+    list_insert(int2, int3, struct Integer, l);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+./linkedlist.h:10:113: note: expanded from macro 'list_insert'
+#define list_insert(curr, next, structure, name) __internal_insert_list_after(&((curr)->name), &((next)->name), (array_ptr<void>)next, sizeof(structure));
+                                                                                                                ^~~~~~~~~~~~~~~~~~~~~
+3 warnings and 10 errors generated.
+*** Error code 1
+
+Stop.
+make: stopped in /root/doubly-linked-list-checked
